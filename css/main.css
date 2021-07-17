@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
+:root {
+  --appFontSize: 15px;
+  --appBorderRadius: 10px;
+  --appBoxShadow: 0 10px 20px 10px hsl(237deg 63% 64% / 10%);
+
+  --appLinearGradient: hsl(236, 72%, 79%), hsl(237, 63%, 64%);
+
+  --colorBackground: hsl(240, 78%, 98%);
+  --colorToggleText: hsl(234, 14%, 74%);
+  --colorDescription: hsl(233, 13%, 49%);
+  --colorPrice: hsl(232, 13%, 33%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: var(--appFontSize);
+  font-family: "Montserrat", serif;
+  background: url("../images/bg-top.svg") right 0 top 0 no-repeat,
+    url("../images/bg-bottom.svg") left 0 bottom 0 no-repeat,
+    var(--colorBackground);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--colorDescription);
+}
+
+.slider-container {
+  display: flex;
+}
+
+.slider-container > span {
+  margin-top: 40px;
+  color: var(--colorToggleText);
+}
+
+.switch {
+  height: 30px;
+  width: 55px;
+  border-radius: 50px;
+  display: block;
+  position: relative;
+  margin: 35px 20px 55px;
+  background: linear-gradient(to right, var(--appLinearGradient));
+  cursor: pointer;
+}
+
+.switch:hover {
+  opacity: 0.5;
+}
+
+.switch input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.slider {
+  height: 24px;
+  width: 24px;
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+  top: 3px;
+  left: 5px;
+}
+
+input:checked + .slider {
+  right: 5px;
+  left: initial;
+}
+
+main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1050px;
+  display: flex;
+  text-align: center;
+}
+
+section {
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  padding: 30px;
+  background-color: white;
+  margin: 20px 0;
+  box-shadow: var(--appBoxShadow);
+}
+
+section:first-of-type {
+  border-radius: var(--appBorderRadius) 0 0 var(--appBorderRadius);
+}
+
+section:last-of-type {
+  border-radius: 0 var(--appBorderRadius) var(--appBorderRadius) 0;
+}
+
+section *:not(.price, button) {
+  color: var(--colorDescription);
+}
+
+.price {
+  font-size: 60px;
+  margin: 20px 0 30px 0;
+  color: var(--colorPrice);
+}
+
+section button {
+  background: linear-gradient(to right, var(--appLinearGradient));
+  width: 100%;
+  padding: 15px;
+  text-transform: uppercase;
+  color: var(--colorBackground);
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: var(--appBorderRadius);
+  border: 1px solid hsl(237, 63%, 64%);
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+section button:hover {
+  background: transparent;
+  color: hsl(237, 63%, 64%);
+}
+
+.active {
+  background-image: linear-gradient(to bottom right, var(--appLinearGradient));
+  margin: 0;
+  border-radius: var(--appBorderRadius);
+  padding: 50px 30px;
+}
+
+.active *:not(button) {
+  color: white !important;
+}
+
+.active button {
+  background: white;
+  color: hsl(237, 63%, 64%);
+  border: 1px solid white;
+}
+
+.active button:hover {
+  color: white;
+}
+
+ul li {
+  list-style-type: none;
+  padding: 20px;
+  border-top: 1px solid var(--colorToggleText);
+}
+
+ul li:last-child {
+  border-bottom: 1px solid var(--colorToggleText);
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    height: auto;
+    min-height: 100%;
+  }
+  main {
+    flex-direction: column;
+  }
+  section {
+    max-width: unset;
+  }
+  .active {
+    padding: 30px;
+  }
+}
